@@ -16,13 +16,14 @@
  </tr>
  <?php foreach ($users as $user) : ?>
  <tr>
-     <td><?php echo $this->escapeHtml($user->title);?></td>
-     <td><?php echo $this->escapeHtml($user->artist);?></td>
+     <td><?php echo $this->escapeHtml($user->id_user);?></td>
+     <td><?php echo $this->escapeHtml($user->nom_user);?></td>
+     <td><?php echo $this->escapeHtml($user->prenom_user);?></td>
      <td>
          <a href="<?php echo $this->url('user',
-             array('action'=>'edit', 'id' => $user->id));?>">Edit</a>
+             array('action'=>'edit', 'id' => $user->id_user));?>">Edit</a>
          <a href="<?php echo $this->url('user',
-             array('action'=>'delete', 'id' => $user->id));?>">Delete</a>
+             array('action'=>'delete', 'id' => $user->id_user));?>">Delete</a>
      </td>
  </tr>
  <?php endforeach; ?>

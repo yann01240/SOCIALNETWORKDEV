@@ -35,7 +35,7 @@ namespace User\Controller;
              $form->setInputFilter($user->getInputFilter());
              $form->setData($request->getPost());
 
-             if ($form->isValid()) {
+            if ($form->isValid()) {
                  $user->exchangeArray($form->getData());
                  $this->getUserTable()->saveUser($user);
 
@@ -69,7 +69,7 @@ namespace User\Controller;
          $form  = new UserForm();
          $form->bind($user);
          $form->get('submit')->setAttribute('value', 'Edit');
-
+         
          $request = $this->getRequest();
          if ($request->isPost()) {
              $form->setInputFilter($user->getInputFilter());
@@ -102,6 +102,7 @@ namespace User\Controller;
 
              if ($del == 'Yes') {
                  $id = (int) $request->getPost('id');
+                 
                  $this->getUserTable()->deleteUser($id);
              }
 

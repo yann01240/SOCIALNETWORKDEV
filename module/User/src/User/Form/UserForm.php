@@ -18,21 +18,70 @@ namespace User\Form;
          parent::__construct('user');
 
          $this->add(array(
-             'name' => 'id',
+             'name' => 'id_user',
              'type' => 'Hidden',
          ));
          $this->add(array(
-             'name' => 'title',
+             'name' => 'prenom_user',
              'type' => 'Text',
              'options' => array(
-                 'label' => 'Title',
+                 'label' => 'Prenom',
              ),
          ));
          $this->add(array(
-             'name' => 'artist',
+             'name' => 'nom_user',
              'type' => 'Text',
              'options' => array(
-                 'label' => 'Artist',
+                 'label' => 'Nom',
+             ),
+         ));
+         $this->add(array(
+             'name' => 'mail_user',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Adresse Mail',
+             ),
+         ));
+         $this->add(array(
+             'name' => 'date_de_naissance_user',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Date de Naissance',
+             ),
+         ));
+         $this->add(array(
+             'name' => 'sexe_user',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Sexe',
+             ),
+         ));
+         $this->add(array(
+             'name' => 'adresse_user',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Adresse',
+             ),
+         ));
+         $this->add(array(
+             'name' => 'code_postal_user',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Code Postal',
+             ),
+         ));
+         $this->add(array(
+             'name' => 'ville_user',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Ville',
+             ),
+         ));
+         $this->add(array(
+             'name' => 'pays_user',
+             'type' => 'Text',
+             'options' => array(
+                 'label' => 'Pays',
              ),
          ));
          $this->add(array(
