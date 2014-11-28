@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Application/view/error/404.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/vendor/zendframework/zendframework/library/Zend/I18n/Translator/Translator.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/src/Album/Model/Album.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/autoload_classmap.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Application/view/error/index.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/vendor/ZF2/library/Zend/Config/Processor/Translator.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/src/Album/Form/AlbumForm.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/Module.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Application/view/application/index/index.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Application/config/module.config.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/view/album/album/index.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/config/application.config.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/view/album/album/delete.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Application/Module.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/composer.phar</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/config/module.config.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/view/album/album/edit.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/src/Album/Controller/AlbumController.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/public/index.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Application/src/Application/Controller/IndexController.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/config/autoload/.gitignore</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Application/view/layout/layout.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/config/autoload/local.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/init_autoloader.php</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/module/Album/view/album/album/add.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/config/autoload/README.md</file>
+            <file>file:/Applications/MAMP/htdocs/ZendSkeletonApplication/config/autoload/global.php</file>
+        </group>
+    </open-files>
+</project-private>
