@@ -51,9 +51,14 @@ namespace User\Form;
          ));
          $this->add(array(
              'name' => 'sexe_user',
-             'type' => 'Text',
+             'type' => 'Select',
              'options' => array(
                  'label' => 'Sexe',
+                 'value_options' => array(
+                     'Homme'=>'Homme',
+                     'Femme'=>'Femme',
+                     ),
+                 'empty_option' => '- - -',
              ),
          ));
          $this->add(array(

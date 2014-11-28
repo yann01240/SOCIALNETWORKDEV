@@ -30,6 +30,9 @@ use Zend\Validator\Date;
 
      public function exchangeArray($data)
      {
+         $datearray = array('year' => 2006, 'month' => 4, 'day' => 18);
+        $date = new Zend_Date($datearray);
+        echo $date;
          $this->id_user = (!empty($data['id_user'])) ? $data['id_user'] : null;
          $this->nom_user = (!empty($data['nom_user'])) ? $data['nom_user'] : null;
          $this->prenom_user  = (!empty($data['prenom_user'])) ? $data['prenom_user'] : null;
@@ -137,20 +140,6 @@ use Zend\Validator\Date;
              $inputFilter->add(array(
                  'name'     => 'sexe_user',
                  'required' => true,
-                 'filters'  => array(
-                     array('name' => 'StripTags'),
-                     array('name' => 'StringTrim'),
-                 ),
-                 'validators' => array(
-                     array(
-                         'name'    => 'StringLength',
-                         'options' => array(
-                             'encoding' => 'UTF-8',
-                             'min'      => 5,
-                             'max'      => 5,
-                         ),
-                     ),
-                 ),
              ));
              $inputFilter->add(array(
                  'name'     => 'adresse_user',
@@ -165,7 +154,7 @@ use Zend\Validator\Date;
                          'options' => array(
                              'encoding' => 'UTF-8',
                              'min'      => 1,
-                             'max'      => 20,
+                             'max'      => 50,
                          ),
                      ),
                  ),

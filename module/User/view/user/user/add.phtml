@@ -9,6 +9,7 @@
  $form->prepare();
 
  echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('id_user'));
  echo $this->formRow($form->get('nom_user'));
  echo $this->formRow($form->get('prenom_user'));
  echo $this->formRow($form->get('mail_user'));
