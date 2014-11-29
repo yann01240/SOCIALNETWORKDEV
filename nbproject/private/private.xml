@@ -3,7 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/view/user/user/index.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/src/User/Form/UserForm.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/src/Album/Form/AlbumForm.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/init_autoloader.php</file>
             <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/.git/config</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/view/user/user/delete.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/view/album/album/delete.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Application/view/application/index/index.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/autoload_classmap.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/src/Album/Model/Album.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/src/User/Model/User.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/view/user/user/edit.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/view/album/album/add.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Application/config/module.config.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/config/autoload/README.md</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/src/User/Model/UserTable.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/config/autoload/local.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/src/Album/Model/AlbumTable.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/config/module.config.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/src/User/Controller/UserController.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/README.md</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/config/autoload/global.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/config/application.config.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/config/module.config.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/view/user/user/add.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Application/Module.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/vendor/ZF2/library/Zend/Form/Form.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/view/album/album/edit.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/User/Module.php</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/view/album/album/index.phtml</file>
+            <file>file:/Applications/MAMP/htdocs/SOCIALNETWORKDEV/module/Album/src/Album/Controller/AlbumController.php</file>
         </group>
     </open-files>
 </project-private>
