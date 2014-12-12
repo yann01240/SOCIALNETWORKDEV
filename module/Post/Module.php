@@ -6,12 +6,12 @@
  * and open the template in the editor.
  */
 
- namespace User;
+ namespace Post;
 
  use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
  use Zend\ModuleManager\Feature\ConfigProviderInterface;
- use User\Model\User;
- use User\Model\UserTable;
+ use Post\Model\Post;
+ use Post\Model\PostTable;
  use Zend\Db\ResultSet\ResultSet;
  use Zend\Db\TableGateway\TableGateway;
 
@@ -40,19 +40,18 @@
      {
          return array(
              'factories' => array(
-                 'User\Model\UserTable' =>  function($sm) {
-                     $tableGateway = $sm->get('UserTableGateway');
-                     $table = new UserTable($tableGateway);
+                 'Post\Model\PostTable' =>  function($sm) {
+                     $tableGateway = $sm->get('PostTableGateway');
+                     $table = new PostTable($tableGateway);
                      return $table;
                  },
-                 'UserTableGateway' => function ($sm) {
+                 'PostTableGateway' => function ($sm) {
                      $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                      $resultSetPrototype = new ResultSet();
-                     $resultSetPrototype->setArrayObjectPrototype(new User());
-                     return new TableGateway('users', $dbAdapter, null, $resultSetPrototype);
+                     $resultSetPrototype->setArrayObjectPrototype(new Post());
+                     return new TableGateway('posts', $dbAdapter, null, $resultSetPrototype);
                  },
              ),
          );
      }
  }
- 
