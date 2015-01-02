@@ -51,6 +51,7 @@ class UserTable {
             'nom_user' => $user->nom_user,
             'prenom_user' => $user->prenom_user,
             'mail_user' => $user->mail_user,
+            'password_user' => md5($user->password_user),
             'date_de_naissance_user' => $user->date_de_naissance_user,
             'sexe_user' => $user->sexe_user,
             'adresse_user' => $user->adresse_user,

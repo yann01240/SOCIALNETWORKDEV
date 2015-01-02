@@ -12,13 +12,14 @@ namespace User\Controller;
  use Zend\View\Model\ViewModel;
  use User\Model\User;
  use User\Form\UserForm;
- use User\Form\Login;
+ use User\Form\LoginForm;
  use Zend\Authentication\Adapter\DbTable;
  use Zend\Session\Container as SessionContainer;
 
  class UserController extends AbstractActionController
  {
      protected $userTable;
+     
      
      public function indexAction()
      {
@@ -131,13 +132,15 @@ namespace User\Controller;
      public function loginAction() {
         $authService = $this->serviceLocator->get('auth_service');
         if ($authService->hasIdentity()) {
-            // if not log in, redirect to login page
-            return $this->redirect()->toUrl('/user/login');
+            return $this->redirect()->toUrl('/user');
         }
 
-        $form = new Login();
+        $form = new LoginForm();
         $loginMsg = array();
         if ($this->getRequest()->isPost()) {
+            
+             $user = new User();
+            $form->setInputFilter($user->getInputFilter());
             $form->setData($this->getRequest()->getPost());
             if (!$form->isValid()) {
                 // not valid form
@@ -146,7 +149,6 @@ namespace User\Controller;
                     'form' => $form
                 ));
             }
-
             $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
             $loginData = $form->getData();
             $authAdapter = new DbTable($dbAdapter, 'users', 'mail_user', 'password_user', 'MD5(?)');
@@ -155,8 +157,9 @@ namespace User\Controller;
             $authService->setAdapter($authAdapter);
             $result = $authService->authenticate();
             if ($result->isValid()) {
+                
                 // set id as identifier in session
-                $userId = $authAdapter->getResultRowObject('id')->id;
+                $userId = $authAdapter->getResultRowObject('id_user')->id_user;
                 $authService->getStorage()->write($userId);
                 return $this->redirect()->toUrl('/user');
             } else {
@@ -178,7 +181,7 @@ namespace User\Controller;
         }
 
         $authService->clearIdentity();
-        $form = new Login();
+        $form = new LoginForm();
         $viewModel = new ViewModel(array('loginMsg' => array('You have been logged out'),
             'form' => $form,
             'title' => 'Log out'

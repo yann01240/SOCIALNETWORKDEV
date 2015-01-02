@@ -46,7 +46,6 @@
              'factories' => array(
                 'auth_service' => function ($sm) {
                     $authService = new AuthenticationService(new SessionStorage('auth'));
-//    				$authService->setStorage(new SessionStorage('auth'));
                     return $authService;
                 },
                 'twitter_oauth' => function ($sm) {
