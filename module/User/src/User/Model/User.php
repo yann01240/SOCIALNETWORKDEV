@@ -16,6 +16,7 @@ use Zend\Validator\Date;
  class User
  {
      public $id_user;
+     public $password_user;
      public $nom_user;
      public $prenom_user;
      public $mail_user;
@@ -31,6 +32,7 @@ use Zend\Validator\Date;
      public function exchangeArray($data)
      {
          $this->id_user = (!empty($data['id_user'])) ? $data['id_user'] : null;
+         $this->password_user = (!empty($data['password_user'])) ? $data['password_user'] : null;
          $this->nom_user = (!empty($data['nom_user'])) ? $data['nom_user'] : null;
          $this->prenom_user  = (!empty($data['prenom_user'])) ? $data['prenom_user'] : null;
          $this->mail_user  = (!empty($data['mail_user'])) ? $data['mail_user'] : null;

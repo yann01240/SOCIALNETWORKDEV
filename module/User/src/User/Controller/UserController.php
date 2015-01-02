@@ -12,6 +12,9 @@ namespace User\Controller;
  use Zend\View\Model\ViewModel;
  use User\Model\User;
  use User\Form\UserForm;
+ use User\Form\Login;
+ use Zend\Authentication\Adapter\DbTable;
+ use Zend\Session\Container as SessionContainer;
 
  class UserController extends AbstractActionController
  {
@@ -124,4 +127,63 @@ namespace User\Controller;
          }
          return $this->userTable;
      }
+     
+     public function loginAction() {
+        $authService = $this->serviceLocator->get('auth_service');
+        if ($authService->hasIdentity()) {
+            // if not log in, redirect to login page
+            return $this->redirect()->toUrl('/user/login');
+        }
+
+        $form = new Login();
+        $loginMsg = array();
+        if ($this->getRequest()->isPost()) {
+            $form->setData($this->getRequest()->getPost());
+            if (!$form->isValid()) {
+                // not valid form
+                return new ViewModel(array(
+                    'title' => 'Log In',
+                    'form' => $form
+                ));
+            }
+
+            $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
+            $loginData = $form->getData();
+            $authAdapter = new DbTable($dbAdapter, 'users', 'mail_user', 'password_user', 'MD5(?)');
+            $authAdapter->setIdentity($loginData['mail_user'])->setCredential($loginData['password_user']);
+            $authService = $this->serviceLocator->get('auth_service');
+            $authService->setAdapter($authAdapter);
+            $result = $authService->authenticate();
+            if ($result->isValid()) {
+                // set id as identifier in session
+                $userId = $authAdapter->getResultRowObject('id')->id;
+                $authService->getStorage()->write($userId);
+                return $this->redirect()->toUrl('/user');
+            } else {
+                $loginMsg = $result->getMessages();
+            }
+        }
+
+        return new ViewModel(array('title' => 'Log In',
+            'form' => $form,
+            'loginMsg' => $loginMsg
+        ));
+    }
+
+    public function logoutAction() {
+        $authService = $this->serviceLocator->get('auth_service');
+        if (!$authService->hasIdentity()) {
+            // if not log in, redirect to login page
+            return $this->redirect()->toUrl('/user/login');
+        }
+
+        $authService->clearIdentity();
+        $form = new Login();
+        $viewModel = new ViewModel(array('loginMsg' => array('You have been logged out'),
+            'form' => $form,
+            'title' => 'Log out'
+        ));
+        $viewModel->setTemplate('user/user/login.phtml');
+        return $viewModel;
+    }
  }

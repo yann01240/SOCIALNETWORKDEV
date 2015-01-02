@@ -14,6 +14,10 @@
  use User\Model\UserTable;
  use Zend\Db\ResultSet\ResultSet;
  use Zend\Db\TableGateway\TableGateway;
+ use Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session as SessionStorage,
+    Zend\Http\Client as HTTPClient,
+    ZendOAuth\OAuth;
 
  class Module implements AutoloaderProviderInterface, ConfigProviderInterface
  {
@@ -40,6 +44,22 @@
      {
          return array(
              'factories' => array(
+                'auth_service' => function ($sm) {
+                    $authService = new AuthenticationService(new SessionStorage('auth'));
+//    				$authService->setStorage(new SessionStorage('auth'));
+                    return $authService;
+                },
+                'twitter_oauth' => function ($sm) {
+                    $httpConfig = array(
+                        'adapter' => 'Zend\Http\Client\Adapter\Socket',
+                        'sslverifypeer' => false
+                    );
+                    $httpClient = new HTTPClient(null, $httpConfig);
+                    OAuth::setHttpClient($httpClient);
+                    $config = $sm->get('Config');
+                    $consumer = new \ZendOAuth\Consumer($config['twitter']);
+                    return $consumer;
+                },
                  'User\Model\UserTable' =>  function($sm) {
                      $tableGateway = $sm->get('UserTableGateway');
                      $table = new UserTable($tableGateway);
