@@ -1,31 +1,35 @@
 <?php
 
- $title = 'My users';
- $this->headTitle($title);
- ?>
- <h1><?php echo $this->escapeHtml($title); ?></h1>
- <p>
-     <a href="<?php echo $this->url('user', array('action'=>'add'));?>">Add new user</a>
- </p>
+use Zend\Session\Container;
 
- <table class="table">
- <tr>
-     <th>ID</th>
-     <th>Nom</th>
-     <th>Prénom</th>
-     <th>&nbsp;</th>
- </tr>
- <?php foreach ($users as $user) : ?>
- <tr>
-     <td><?php echo $this->escapeHtml($user->id_user);?></td>
-     <td><?php echo $this->escapeHtml($user->nom_user);?></td>
-     <td><?php echo $this->escapeHtml($user->prenom_user);?></td>
-     <td>
-         <a href="<?php echo $this->url('user',
-             array('action'=>'edit', 'id' => $user->id_user));?>">Edit</a>
-         <a href="<?php echo $this->url('user',
-             array('action'=>'delete', 'id' => $user->id_user));?>">Delete</a>
-     </td>
- </tr>
- <?php endforeach; ?>
- </table>
+$session = new Container('user');
+if ($session->offsetExists('id_user')) {
+    $id_user = $session->offsetGet('id_user');
+}
+$title = 'Utilisateurs';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<table class="table">
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($users as $user) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($user->nom_user); ?></td>
+            <td><?php echo $this->escapeHtml($user->prenom_user); ?></td>
+
+            <?php if ($id_user == $user->id_user) { ?>
+                <td>
+                    <a href="<?php echo $this->url('user', array('action' => 'edit', 'id' => $user->id_user));
+        ?>">Modifier</a>
+                    <a href="<?php echo $this->url('user', array('action' => 'delete', 'id' => $user->id_user));
+        ?>">Supprimer</a>
+                </td>
+
+            <?php } ?>
+        </tr>
+    <?php endforeach; ?>
+</table>

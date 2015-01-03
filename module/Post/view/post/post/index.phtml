@@ -1,31 +1,48 @@
 <?php
 
- $title = 'My posts';
- $this->headTitle($title);
- ?>
- <h1><?php echo $this->escapeHtml($title); ?></h1>
- <p>
-     <a href="<?php echo $this->url('post', array('action'=>'add'));?>">Add new post</a>
- </p>
+use Zend\Session\Container;
 
- <table class="table">
- <tr>
-     <th>id post</th>
-     <th>id user</th>
-     <th>contenu</th>
-     <th>&nbsp;</th>
- </tr>
- <?php foreach ($posts as $post) : ?>
- <tr>
-     <td><?php echo $this->escapeHtml($post->id_post);?></td>
-     <td><?php echo $this->escapeHtml($post->id_user);?></td>
-     <td><?php echo $this->escapeHtml($post->contenu);?></td>
-     <td>
-         <a href="<?php echo $this->url('post',
-             array('action'=>'edit', 'id' => $post->id));?>">Edit</a>
-         <a href="<?php echo $this->url('post',
-             array('action'=>'delete', 'id' => $post->id));?>">Delete</a>
-     </td>
- </tr>
- <?php endforeach; ?>
- </table>
+$session = new Container('user');
+if ($session->offsetExists('id_user')) {
+    $id_user = $session->offsetGet('id_user');
+}
+$title = 'Posts';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('post', array('action' => 'add')); ?>">Ajouter un Post</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Titre</th>
+        <th>contenu</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($posts as $post) : 
+        foreach ($users as $user) :
+            if ($user->id_user==$post->id_user){
+                break;
+            }
+        endforeach;
+    ?>
+
+        <tr>
+            <td><?php echo $this->escapeHtml($user->nom_user); ?></td>
+            <td><?php echo $this->escapeHtml($user->prenom_user); ?></td>
+            <td><?php echo $this->escapeHtml($post->titre); ?></td>
+            <td><?php echo $this->escapeHtml($post->contenu); ?></td>
+            <?php if ($id_user == $post->id_user) { ?>
+                <td>
+                    <a href="<?php echo $this->url('post', array('action' => 'edit', 'id' => $post->id_post));
+        ?>">Modifier</a>
+                    <a href="<?php echo $this->url('post', array('action' => 'delete', 'id' => $post->id_post));
+        ?>">Supprimer</a>
+                </td>
+            <?php } ?>
+        </tr>
+    <?php endforeach; ?>
+</table>

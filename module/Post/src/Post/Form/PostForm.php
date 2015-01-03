@@ -23,10 +23,7 @@ namespace Post\Form;
          ));
          $this->add(array(
              'name' => 'id_user',
-             'type' => 'Text',
-             'options' => array(
-                 'label' => 'id user',
-             ),
+             'type' => 'Hidden',
          ));
          $this->add(array(
              'name' => 'titre',

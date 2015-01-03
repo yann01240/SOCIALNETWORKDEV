@@ -14,7 +14,7 @@ namespace User\Controller;
  use User\Form\UserForm;
  use User\Form\LoginForm;
  use Zend\Authentication\Adapter\DbTable;
- use Zend\Session\Container as SessionContainer;
+ use Zend\Session\Container;
 
  class UserController extends AbstractActionController
  {
@@ -30,6 +30,10 @@ namespace User\Controller;
 
      public function addAction()
      {
+        $session = new Container('user');
+        if ($session->offsetExists('id_user')) {
+            return $this->redirect()->toUrl('/post/');
+        }
          $form = new UserForm();
          $form->get('submit')->setValue('Add');
 
@@ -52,6 +56,13 @@ namespace User\Controller;
 
      public function editAction()
      {
+         
+        $session = new Container('user');
+        if ($session->offsetExists('id_user')) {
+            $id_user = $session->offsetGet('id_user');
+        } else {
+            return $this->redirect()->toUrl('/user/login');
+        }
          $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
              return $this->redirect()->toRoute('user', array(
@@ -63,6 +74,12 @@ namespace User\Controller;
          // if it cannot be found, in which case go to the index page.
          try {
              $user = $this->getUserTable()->getUser($id);
+             
+            if ($user->id_user != $id_user) {
+                return $this->redirect()->toRoute('post', array(
+                            'action' => 'index'
+                ));
+            }
          }
          catch (\Exception $ex) {
              return $this->redirect()->toRoute('user', array(
@@ -95,16 +112,28 @@ namespace User\Controller;
 
      public function deleteAction()
      {
+         
+        $session = new Container('user');
+        if ($session->offsetExists('id_user')) {
+            $id_user = $session->offsetGet('id_user');
+        } else {
+            return $this->redirect()->toUrl('/user/login');
+        }
          $id = (int) $this->params()->fromRoute('id', 0);
          if (!$id) {
              return $this->redirect()->toRoute('user');
          }
+        if ($id != $id_user) {
+                return $this->redirect()->toRoute('post', array(
+                            'action' => 'index'
+                ));
+            }
 
          $request = $this->getRequest();
          if ($request->isPost()) {
-             $del = $request->getPost('del', 'No');
+             $del = $request->getPost('del', 'Non');
 
-             if ($del == 'Yes') {
+             if ($del == 'Oui') {
                  $id = (int) $request->getPost('id');
                  
                  $this->getUserTable()->deleteUser($id);
@@ -139,15 +168,15 @@ namespace User\Controller;
         $loginMsg = array();
         if ($this->getRequest()->isPost()) {
             
-             $user = new User();
+            $user = new User();
             $form->setInputFilter($user->getInputFilter());
             $form->setData($this->getRequest()->getPost());
             if (!$form->isValid()) {
                 // not valid form
-                return new ViewModel(array(
+                /*return new ViewModel(array(
                     'title' => 'Log In',
                     'form' => $form
-                ));
+                ));*/
             }
             $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
             $loginData = $form->getData();
@@ -161,15 +190,19 @@ namespace User\Controller;
                 // set id as identifier in session
                 $userId = $authAdapter->getResultRowObject('id_user')->id_user;
                 $authService->getStorage()->write($userId);
+                
+                $session = new Container('user');
+                $session->id_user = $userId;
                 return $this->redirect()->toUrl('/user');
+                
             } else {
                 $loginMsg = $result->getMessages();
             }
         }
 
-        return new ViewModel(array('title' => 'Log In',
-            'form' => $form,
-            'loginMsg' => $loginMsg
+        return new ViewModel(array(
+            'title' => 'Log In',
+            'form' => $form
         ));
     }
 
@@ -181,6 +214,8 @@ namespace User\Controller;
         }
 
         $authService->clearIdentity();
+        $session = new Container('user');
+        $session->getManager()->getStorage()->clear('user');
         $form = new LoginForm();
         $viewModel = new ViewModel(array('loginMsg' => array('You have been logged out'),
             'form' => $form,

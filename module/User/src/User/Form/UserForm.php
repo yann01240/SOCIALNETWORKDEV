@@ -59,7 +59,7 @@ class UserForm extends Form  {
             'name' => 'date_de_naissance_user',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Date de Naissance',
+                'label' => 'Date de Naissance (AAAA-MM-JJ)',
             ),
         ));
         $this->add(array(
