@@ -2,7 +2,7 @@
 
 use Zend\Session\Container;
 
-$session = new Container('user');
+$session = new Container('socialnetwork_user');
 if ($session->offsetExists('id_user')) {
     $id_user = $session->offsetGet('id_user');
 }

@@ -20,7 +20,7 @@ class PostController extends AbstractActionController {
     protected $userTable;
 
     public function indexAction() {
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if (!$session->offsetExists('id_user')) {
             return $this->redirect()->toUrl('/user/login');
         }
@@ -31,7 +31,7 @@ class PostController extends AbstractActionController {
     }
 
     public function addAction() {
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if (!$session->offsetExists('id_user')) {
             return $this->redirect()->toUrl('/user/login');
         }
@@ -56,7 +56,7 @@ class PostController extends AbstractActionController {
     }
 
     public function editAction() {
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if ($session->offsetExists('id_user')) {
             $id_user = $session->offsetGet('id_user');
         } else {
@@ -108,7 +108,7 @@ class PostController extends AbstractActionController {
     }
 
     public function deleteAction() {
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if ($session->offsetExists('id_user')) {
             $id_user = $session->offsetGet('id_user');
         } else {

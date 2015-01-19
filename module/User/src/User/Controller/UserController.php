@@ -22,7 +22,7 @@ class UserController extends AbstractActionController {
 
     public function indexAction() {
 
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if (!$session->offsetExists('id_user')) {
             return $this->redirect()->toRoute('user', array(
                         'action' => 'login'
@@ -34,7 +34,7 @@ class UserController extends AbstractActionController {
     }
 
     public function addAction() {
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if ($session->offsetExists('id_user')) {
             return $this->redirect()->toRoute('post', array(
                         'action' => 'index'
@@ -64,7 +64,7 @@ class UserController extends AbstractActionController {
 
     public function editAction() {
 
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if ($session->offsetExists('id_user')) {
             $id_user = $session->offsetGet('id_user');
         } else {
@@ -122,7 +122,7 @@ class UserController extends AbstractActionController {
 
     public function deleteAction() {
 
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         if ($session->offsetExists('id_user')) {
             $id_user = $session->offsetGet('id_user');
         } else {
@@ -205,7 +205,7 @@ class UserController extends AbstractActionController {
                 $userId = $authAdapter->getResultRowObject('id_user')->id_user;
                 $authService->getStorage()->write($userId);
 
-                $session = new Container('user');
+                $session = new Container('socialnetwork_user');
                 $session->id_user = $userId;
                 return $this->redirect()->toRoute('user', array(
                             'action' => 'index'
@@ -231,7 +231,7 @@ class UserController extends AbstractActionController {
         }
 
         $authService->clearIdentity();
-        $session = new Container('user');
+        $session = new Container('socialnetwork_user');
         $session->getManager()->getStorage()->clear('user');
         $form = new LoginForm();
         $viewModel = new ViewModel(array('loginMsg' => array('You have been logged out'),
