@@ -5,6 +5,8 @@ use Zend\Session\Container;
 $session = new Container('user');
 if ($session->offsetExists('id_user')) {
     $id_user = $session->offsetGet('id_user');
+} else {
+    break;
 }
 $title = 'Utilisateurs';
 $this->headTitle($title);
@@ -24,9 +26,9 @@ $this->headTitle($title);
             <?php if ($id_user == $user->id_user) { ?>
                 <td>
                     <a href="<?php echo $this->url('user', array('action' => 'edit', 'id' => $user->id_user));
-        ?>">Modifier</a>
+                ?>">Modifier</a>
                     <a href="<?php echo $this->url('user', array('action' => 'delete', 'id' => $user->id_user));
-        ?>">Supprimer</a>
+                ?>">Supprimer</a>
                 </td>
 
             <?php } ?>
