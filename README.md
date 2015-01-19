@@ -4,16 +4,11 @@ SOCIALNETWORKDEV
 Installation
 ------------
 
-Application
------------
-
 Une fois le projet Dézipé, ouvrez le projet "SOCIALNETWORKDEV" sous Netbeans
 
 
-Web Server Setup
-----------------
-
-### Apache Setup
+Configuration Apache
+--------------------
 
 Pour configurer apache, configurer un virtual host vers le dossier public/ du projet:
 
