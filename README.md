@@ -10,7 +10,7 @@ Une fois le projet Dézipé, ouvrez le projet "SOCIALNETWORKDEV" sous Netbeans
 Configuration Apache
 --------------------
 
-Pour configurer apache, configurer un virtual host vers le dossier public/ du projet:
+Pour configurer apache, ajouter un hôte virtuel vers le dossier public/ du projet:
 
     <VirtualHost *:80>
         ServerName SOCIALNETWORKDEV.localhost
@@ -23,3 +23,9 @@ Pour configurer apache, configurer un virtual host vers le dossier public/ du pr
             Allow from all
         </Directory>
     </VirtualHost>
+
+Configuration MySQL
+-------------------
+
+Pour configurer MySQL, executer le script SOCIALNETWORKDEV.sql
+
