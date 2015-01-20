@@ -14,14 +14,14 @@ class LoginForm extends Form {
             'name' => 'mail_user',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Adresse Mail',
+                'label' => 'Adresse Mail : ',
             ),
         ));
         $this->add(array(
             'name' => 'password_user',
             'type' => 'Password',
             'options' => array(
-                'label' => 'Mot de Passe',
+                'label' => 'Mot de Passe : ',
             ),
         ));
         $this->add(array(

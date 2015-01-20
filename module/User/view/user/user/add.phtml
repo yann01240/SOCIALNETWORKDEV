@@ -1,25 +1,106 @@
 <?php
+$title = 'Inscription';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('user', array('action' => 'add')));
+$form->prepare();
+?>
+<form>  
+</form>
 
- $title = 'Inscription';
- $this->headTitle($title);
- ?>
- <h1><?php echo $this->escapeHtml($title); ?></h1>
- <?php
- $form->setAttribute('action', $this->url('user', array('action' => 'add')));
- $form->prepare();
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+	/* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
+    .form-horizontal .control-label{
+        padding-top: 7px;
+    }
+</style>
+<form class="form-horizontal">
+        
+    <?php echo $this->form()->openTag($form); ?>
+    <?php echo $this->formHidden($form->get('id_user')); ?>
+     <div class="form-group">
+            <label for="nom_user" class="control-label col-xs-3 col-xs-offset-2">Nom</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('nom_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="prenom_user" class="control-label col-xs-3 col-xs-offset-2">Prénom</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('prenom_user')); ?>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="mail_user" class="control-label col-xs-3 col-xs-offset-2">Adresse Mail</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('mail_user')); ?>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="password_user" class="control-label col-xs-3 col-xs-offset-2">Mot de Passe</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('password_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="repassword_user" class="control-label col-xs-3 col-xs-offset-2">Confirmation</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('repassword_user')); ?>
+            </div>
+        </div>
+        
+    
+    <div class="form-group">
+            <label for="date_de_naissance_user" class="control-label col-xs-3 col-xs-offset-2">Date de Naissance</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('date_de_naissance_user')); ?>
+            </div>
+        </div>
+    <div class="form-group">
+            <label for="sexe_user" class="control-label col-xs-3 col-xs-offset-2">Sexe</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('sexe_user')); ?>
+            </div>
+        </div>
+    <div class="form-group">
+            <label for="adresse_user" class="control-label col-xs-3 col-xs-offset-2">Adresse</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('adresse_user')); ?>
+            </div>
+        </div>
+    <div class="form-group">
+            <label for="code_postal_user" class="control-label col-xs-3 col-xs-offset-2">Code Postal</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('code_postal_user')); ?>
+            </div>
+        </div>
+    <div class="form-group">
+            <label for="ville_user" class="control-label col-xs-3 col-xs-offset-2">Ville</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('ville_user')); ?>
+            </div>
+        </div>
+    <div class="form-group">
+            <label for="pays_user" class="control-label col-xs-3 col-xs-offset-2">Pays</label>
+            <div class="col-xs-3">
+                <?php echo $this->formRow($form->get('pays_user')); ?>
+            </div>
+        </div>
+    <div class="form-group">
+            <div class="col-xs-offset-6">
+                <script>  $('.selectpicker').selectpicker();</script>
+    <?php echo $this->formSubmit($form->get('submit')); ?>
+            </div>
+        </div>
+    <?php echo $this->form()->closeTag(); ?>
+    
 
- echo $this->form()->openTag($form);
- echo $this->formHidden($form->get('id_user'));
- echo $this->formRow($form->get('nom_user'));
- echo $this->formRow($form->get('prenom_user'));
- echo $this->formRow($form->get('mail_user'));
- echo $this->formRow($form->get('password_user'));
- echo $this->formRow($form->get('repassword_user'));
- echo $this->formRow($form->get('date_de_naissance_user'));
- echo $this->formRow($form->get('sexe_user'));
- echo $this->formRow($form->get('adresse_user'));
- echo $this->formRow($form->get('code_postal_user'));
- echo $this->formRow($form->get('ville_user'));
- echo $this->formRow($form->get('pays_user'));
- echo $this->formSubmit($form->get('submit'));
- echo $this->form()->closeTag();
+    </fieldset>
+</form>
