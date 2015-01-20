@@ -22,7 +22,7 @@ class PostController extends AbstractActionController {
     public function indexAction() {
         $session = new Container('socialnetwork_user');
         if (!$session->offsetExists('id_user')) {
-            return $this->redirect()->toUrl('/user/login');return $this->redirect()->toRoute('user', array(
+            return $this->redirect()->toRoute('user', array(
                         'action' => 'login'
             ));
         }
