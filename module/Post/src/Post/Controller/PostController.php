@@ -22,7 +22,9 @@ class PostController extends AbstractActionController {
     public function indexAction() {
         $session = new Container('socialnetwork_user');
         if (!$session->offsetExists('id_user')) {
-            return $this->redirect()->toUrl('/user/login');
+            return $this->redirect()->toUrl('/user/login');return $this->redirect()->toRoute('user', array(
+                        'action' => 'login'
+            ));
         }
         return new ViewModel(array(
             'posts' => $this->getPostTable()->fetchAll(),
@@ -33,7 +35,9 @@ class PostController extends AbstractActionController {
     public function addAction() {
         $session = new Container('socialnetwork_user');
         if (!$session->offsetExists('id_user')) {
-            return $this->redirect()->toUrl('/user/login');
+            return $this->redirect()->toRoute('user', array(
+                        'action' => 'login'
+            ));
         }
         $form = new PostForm();
         $form->get('submit')->setValue('Add');
@@ -49,7 +53,9 @@ class PostController extends AbstractActionController {
                 $this->getPostTable()->savePost($post);
 
                 // Redirect to list of posts
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('post', array(
+                        'action' => 'index'
+            ));
             }
         }
         return array('form' => $form);
@@ -60,7 +66,9 @@ class PostController extends AbstractActionController {
         if ($session->offsetExists('id_user')) {
             $id_user = $session->offsetGet('id_user');
         } else {
-            return $this->redirect()->toUrl('/user/login');
+            return $this->redirect()->toRoute('user', array(
+                        'action' => 'login'
+            ));
         }
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
@@ -97,7 +105,9 @@ class PostController extends AbstractActionController {
                 $this->getPostTable()->savePost($post);
 
                 // Redirect to list of posts
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('post', array(
+                        'action' => 'index'
+            ));
             }
         }
 
@@ -112,7 +122,9 @@ class PostController extends AbstractActionController {
         if ($session->offsetExists('id_user')) {
             $id_user = $session->offsetGet('id_user');
         } else {
-            return $this->redirect()->toUrl('/user/login');
+            return $this->redirect()->toRoute('user', array(
+                        'action' => 'login'
+            ));
         }
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
@@ -133,7 +145,9 @@ class PostController extends AbstractActionController {
             }
 
             // Redirect to list of posts
-            return $this->redirect()->toRoute('post');
+            return $this->redirect()->toRoute('post', array(
+                        'action' => 'index'
+            ));
         }
 
         return array(
