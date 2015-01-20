@@ -22,6 +22,7 @@ $this->doctype();
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                 ->prependStylesheet($this->basePath() . '/css/style.css')
                 ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
+                ->prependStylesheet($this->basePath() . '/css/bootstrap-select.min.css')
                 ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
         ?>
 
@@ -29,6 +30,7 @@ $this->doctype();
         <?php
         echo $this->headScript()
                 ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/bootstrap-select.min.js')
                 ->prependFile($this->basePath() . '/js/jquery.min.js')
                 ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
                 ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
@@ -60,6 +62,21 @@ $this->doctype();
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
+        <script type="text/javascript">
+            $('.selectpicker').selectpicker({
+      style: 'btn-info',
+      size: 4
+  });
+                    </script>
+                    <style type="text/css">
+    .bs-example{
+        margin: 20px;
+    }
+    /* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
+    .form-horizontal .control-label{
+        padding-top: 7px;
+    }
+</style>
         <div class="container">
             <?php echo $this->content; ?>
             <hr>

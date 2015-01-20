@@ -3,8 +3,9 @@
  $title = 'Modifier mes Données';
  $this->headTitle($title);
  ?>
- <h1><?php echo $this->escapeHtml($title); ?></h1>
-
+<div  class='row'>
+    <h1  class='col-xs-2 col-xs-offset-5'><?php echo $this->escapeHtml($title); ?></h1>
+</div><br>
  <?php
  $form = $this->form;
  $form->setAttribute('action', $this->url(
@@ -14,20 +15,92 @@
          'id'     => $this->id,
      )
  ));
- $form->prepare();
+ 
+?>
 
- echo $this->form()->openTag($form);
- echo $this->formHidden($form->get('id_user'));
- echo $this->formRow($form->get('nom_user'));
- echo $this->formRow($form->get('prenom_user'));
- echo $this->formRow($form->get('mail_user'));
- echo $this->formRow($form->get('password_user'));
- echo $this->formRow($form->get('repassword_user'));
- echo $this->formRow($form->get('date_de_naissance_user'));
- echo $this->formRow($form->get('sexe_user'));
- echo $this->formRow($form->get('adresse_user'));
- echo $this->formRow($form->get('code_postal_user'));
- echo $this->formRow($form->get('ville_user'));
- echo $this->formRow($form->get('pays_user'));
- echo $this->formSubmit($form->get('submit'));
- echo $this->form()->closeTag();
+<div class='row'>
+    <div class='col-xs-6 col-xs-offset-3'>
+    <form class="form-horizontal">
+
+        <?php echo $this->form()->openTag($form); ?>
+        <?php echo $this->formHidden($form->get('id_user')); ?>
+        <div class="form-group">
+            <label for="nom_user" class="control-label col-xs-4">Nom</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('nom_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="prenom_user" class="control-label col-xs-4">Prénom</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('prenom_user')); ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="mail_user" class="control-label col-xs-4">Adresse Mail</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('mail_user')); ?>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password_user" class="control-label col-xs-4">Mot de Passe</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('password_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="repassword_user" class="control-label col-xs-4">Confirmation</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('repassword_user')); ?>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="date_de_naissance_user" class="control-label col-xs-4">Date de Naissance</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('date_de_naissance_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="adresse_user" class="control-label col-xs-4">Adresse</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('adresse_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="code_postal_user" class="control-label col-xs-4">Code Postal</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('code_postal_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ville_user" class="control-label col-xs-4">Ville</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('ville_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pays_user" class="control-label col-xs-4">Pays</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('pays_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sexe_user" class="control-label col-xs-4">Sexe</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('sexe_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-offset-5 col-xs-4">
+                <?php echo $this->formSubmit($form->get('submit')); ?>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag(); ?>
+
+    </form>
+</div>
+</div>

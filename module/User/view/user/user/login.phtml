@@ -5,16 +5,32 @@ $form->prepare();
 $form->setAttribute('action', $this->url('user', array('action' => 'login')));
 ?>
 
-    <?php echo $this->form()->openTag($form); ?>
-    <fieldset>
+<div  class='row'>
+    <h1  class='col-xs-2 col-xs-offset-5'><?php echo $this->escapeHtml($title); ?></h1>
+</div><br>
+<?php echo $this->form()->openTag($form); ?>
+<div class='row'>
+    <div class='col-xs-6 col-xs-offset-3'>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="mail_user" class="control-label col-xs-4">Email</label>
+                <div class="col-xs-8">
+                    <?php echo $this->formRow($form->get('mail_user')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password_user" class="control-label col-xs-4">Password</label>
+                <div class="col-xs-8">
+                    <?php echo $this->formRow($form->get('password_user')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-8">
+                    <?php echo $this->formSubmit($form->get('submit')); ?>
+                </div>
+            </div>
+        </form>
+    </div></div>
 
-        <!-- Form Name -->
-        <legend>Login</legend>
-        <?php echo $this->formRow($form->get('mail_user')); ?>
-        <?php echo $this->formRow($form->get('password_user')); ?>
 
-        <?php echo $this->formSubmit($form->get('submit')); ?>
-
-    </fieldset>
-
-    <?php echo $this->form()->closeTag(); ?>
+<?php echo $this->form()->closeTag(); ?>

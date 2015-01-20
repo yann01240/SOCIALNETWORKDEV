@@ -10,28 +10,20 @@ class LoginForm extends Form {
         parent::__construct('login');
         
 
-        $this->add(array(
-            'name' => 'mail_user',
-            'type' => 'Text',
-            'options' => array(
-                'label' => 'Adresse Mail : ',
-            ),
-        ));
-        $this->add(array(
-            'name' => 'password_user',
-            'type' => 'Password',
-            'options' => array(
-                'label' => 'Mot de Passe : ',
-            ),
-        ));
-        $this->add(array(
-            'name' => 'submit',
-            'type' => 'Submit',
-            'attributes' => array(
-                'value' => 'Login',
-                'id' => 'submitbutton',
-            ),
-        ));
+        $mail_user = new \Zend\Form\Element\Text('mail_user');
+        $mail_user->setAttribute('class', 'form-control');
+        $mail_user->setAttribute('placeholder', 'Entre ton mail');
+        $this->add($mail_user);
+        
+        $password_user = new \Zend\Form\Element\Password('password_user');
+        $password_user->setAttribute('class', 'form-control');
+        $password_user->setAttribute('placeholder', 'Entre ton password');
+        $this->add($password_user);
+        
+        $submit = new \Zend\Form\Element\Submit('submit');
+        $submit->setAttribute('value', 'Login');
+        $submit->setAttribute('class', 'btn btn-primary');
+        $this->add($submit);
     }
 
 }

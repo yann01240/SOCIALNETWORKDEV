@@ -74,7 +74,7 @@ class UserForm extends Form {
 
         $sexe_user = new \Zend\Form\Element\Select('sexe_user');
         
-        $ville_user->setAttribute('class', 'selectpicker');
+        $sexe_user->setAttribute('class', 'selectpicker col-xs-12');
         $sexe_user->setValueOptions(array(
                 'Homme' => 'Homme',
                 'Femme' => 'Femme',
@@ -83,8 +83,8 @@ class UserForm extends Form {
         $this->add($sexe_user);
         
         $submit = new \Zend\Form\Element\Submit('submit');
-        $submit->setAttribute('value', 'Go');
-        $submit->setAttribute('class', 'btn btn_primary');
+        $submit->setAttribute('value', 'Login');
+        $submit->setAttribute('class', 'btn btn-primary');
         $this->add($submit);
     }
 

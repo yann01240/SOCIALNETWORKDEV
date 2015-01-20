@@ -188,7 +188,7 @@ class UserController extends AbstractActionController {
             if (!$form->isValid()) {
                 // not valid form
                 return new ViewModel(array(
-                    'title' => 'Log In',
+                    'title' => 'Connexion',
                     'form' => $form
                 ));
             }
@@ -216,7 +216,7 @@ class UserController extends AbstractActionController {
         }
 
         return new ViewModel(array(
-            'title' => 'Log In',
+            'title' => 'Connexion',
             'form' => $form
         ));
     }
