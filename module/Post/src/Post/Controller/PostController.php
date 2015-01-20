@@ -53,7 +53,9 @@ class PostController extends AbstractActionController {
                 $this->getPostTable()->savePost($post);
 
                 // Redirect to list of posts
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('post', array(
+                        'action' => 'index'
+            ));
             }
         }
         return array('form' => $form);
@@ -103,7 +105,9 @@ class PostController extends AbstractActionController {
                 $this->getPostTable()->savePost($post);
 
                 // Redirect to list of posts
-                return $this->redirect()->toRoute('post');
+                return $this->redirect()->toRoute('post', array(
+                        'action' => 'index'
+            ));
             }
         }
 
@@ -141,7 +145,9 @@ class PostController extends AbstractActionController {
             }
 
             // Redirect to list of posts
-            return $this->redirect()->toRoute('post');
+            return $this->redirect()->toRoute('post', array(
+                        'action' => 'index'
+            ));
         }
 
         return array(

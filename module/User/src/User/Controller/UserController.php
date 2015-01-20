@@ -232,7 +232,7 @@ class UserController extends AbstractActionController {
 
         $authService->clearIdentity();
         $session = new Container('socialnetwork_user');
-        $session->getManager()->getStorage()->clear('user');
+        $session->getManager()->getStorage()->clear('socialnetwork_user');
         $form = new LoginForm();
         $viewModel = new ViewModel(array('loginMsg' => array('You have been logged out'),
             'form' => $form,
