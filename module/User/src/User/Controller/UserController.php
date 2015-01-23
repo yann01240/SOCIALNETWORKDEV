@@ -41,11 +41,11 @@ class UserController extends AbstractActionController {
             ));
         }
         $form = new UserForm();
-        $form->get('submit')->setValue('Inscription');
 
         $request = $this->getRequest();
         if ($request->isPost()) {
             $user = new User();
+
             $form->setInputFilter($user->getInputFilter());
             $form->setData($request->getPost());
 
@@ -56,6 +56,12 @@ class UserController extends AbstractActionController {
                 // Redirect to list of users
                 return $this->redirect()->toRoute('user', array(
                             'action' => 'login'
+                ));
+            } else {
+
+                return new ViewModel(array(
+                    'title' => 'Connexion',
+                    'form' => $form
                 ));
             }
         }
@@ -183,13 +189,15 @@ class UserController extends AbstractActionController {
         if ($this->getRequest()->isPost()) {
 
             $user = new User();
-            $form->setInputFilter($user->getInputFilter());
+            $form->setInputFilter($user->getInputFilterLogin());
             $form->setData($this->getRequest()->getPost());
             if (!$form->isValid()) {
                 // not valid form
+                $formenonvalide = $form->getData();
                 return new ViewModel(array(
                     'title' => 'Connexion',
-                    'form' => $form
+                    'form' => $form,
+                    'formenonvalide' => $formenonvalide
                 ));
             }
             $dbAdapter = $this->serviceLocator->get('Zend\Db\Adapter\Adapter');
@@ -236,7 +244,7 @@ class UserController extends AbstractActionController {
         $form = new LoginForm();
         $viewModel = new ViewModel(array('loginMsg' => array('You have been logged out'),
             'form' => $form,
-            'title' => 'Log out'
+            'title' => 'Connexion'
         ));
         $viewModel->setTemplate('user/user/login.phtml');
         return $viewModel;

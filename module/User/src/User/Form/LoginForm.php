@@ -21,7 +21,7 @@ class LoginForm extends Form {
         $this->add($password_user);
         
         $submit = new \Zend\Form\Element\Submit('submit');
-        $submit->setAttribute('value', 'Login');
+        $submit->setValue('Login');
         $submit->setAttribute('class', 'btn btn-primary');
         $this->add($submit);
     }

@@ -1,36 +1,43 @@
 <?php
 $this->headTitle($title);
 $form = $this->form;
-$form->prepare();
+$form->setAttribute('class', 'form-horizontal');
 $form->setAttribute('action', $this->url('user', array('action' => 'login')));
+$form->prepare();
 ?>
-
+<?php if (isset($formenonvalide)){ 
+     var_dump($formenonvalide);
+            unset($formenonvalide);
+}?>
 <div  class='row'>
     <h1  class='col-xs-2 col-xs-offset-5'><?php echo $this->escapeHtml($title); ?></h1>
-</div><br>
-<?php echo $this->form()->openTag($form); ?>
+</div>
+
+<br>
+
 <div class='row'>
     <div class='col-xs-6 col-xs-offset-3'>
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label for="mail_user" class="control-label col-xs-4">Email</label>
-                <div class="col-xs-8">
-                    <?php echo $this->formRow($form->get('mail_user')); ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password_user" class="control-label col-xs-4">Password</label>
-                <div class="col-xs-8">
-                    <?php echo $this->formRow($form->get('password_user')); ?>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-xs-8">
-                    <?php echo $this->formSubmit($form->get('submit')); ?>
-                </div>
-            </div>
-        </form>
-    </div></div>
 
+        <?php echo $this->form()->openTag($form); ?>
+        <div class="form-group">
+            <label for="mail_user" class="control-label col-xs-4">Email</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('mail_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password_user" class="control-label col-xs-4">Password</label>
+            <div class="col-xs-8">
+                <?php echo $this->formRow($form->get('password_user')); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-8">
+                <?php echo $this->formSubmit($form->get('submit')); ?>
+            </div>
+        </div>
 
-<?php echo $this->form()->closeTag(); ?>
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>
+

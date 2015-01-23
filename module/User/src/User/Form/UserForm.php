@@ -18,6 +18,8 @@ class UserForm extends Form {
     public function __construct($name = null) {
         // we want to ignore the name passed
         parent::__construct('user');
+        
+        $this->setAttribute('method', 'post');
 
         $id_user = new Hidden('id_user');
         $this->add($id_user);
@@ -73,7 +75,6 @@ class UserForm extends Form {
         $this->add($ville_user);
 
         $sexe_user = new \Zend\Form\Element\Select('sexe_user');
-        
         $sexe_user->setAttribute('class', 'selectpicker col-xs-12');
         $sexe_user->setValueOptions(array(
                 'Homme' => 'Homme',
@@ -83,7 +84,7 @@ class UserForm extends Form {
         $this->add($sexe_user);
         
         $submit = new \Zend\Form\Element\Submit('submit');
-        $submit->setAttribute('value', 'Login');
+        $submit->setValue('Inscription');
         $submit->setAttribute('class', 'btn btn-primary');
         $this->add($submit);
     }

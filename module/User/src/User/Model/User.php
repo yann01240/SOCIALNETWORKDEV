@@ -34,7 +34,7 @@ class User {
         $this->nom_user = (!empty($data['nom_user'])) ? $data['nom_user'] : null;
         $this->prenom_user = (!empty($data['prenom_user'])) ? $data['prenom_user'] : null;
         $this->mail_user = (!empty($data['mail_user'])) ? $data['mail_user'] : null;
-//        $this->date_de_naissance_user = (!empty($data['date_de_naissance_user'])) ? $data['date_de_naissance_user'] : null;
+        $this->date_de_naissance_user = (!empty($data['date_de_naissance_user'])) ? $data['date_de_naissance_user'] : null;
         $this->sexe_user = (!empty($data['sexe_user'])) ? $data['sexe_user'] : null;
         $this->adresse_user = (!empty($data['adresse_user'])) ? $data['adresse_user'] : null;
         $this->code_postal_user = (!empty($data['code_postal_user'])) ? $data['code_postal_user'] : null;
@@ -247,6 +247,51 @@ class User {
                             'max' => 15,
                         ),
                     ),
+                ),
+            ));
+            $this->inputFilter = $inputFilter;
+        }
+        return $this->inputFilter;
+    }
+    
+    public function getInputFilterLogin() {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+            $inputFilter->add(array(
+                'name' => 'password_user',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 1,
+                            'max' => 40,
+                        ),
+                    ),
+                ),
+            ));
+            $inputFilter->add(array(
+                'name' => 'mail_user',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min' => 1,
+                            'max' => 50,
+                        ),
+                    ),
+                    new EmailAddress(),
                 ),
             ));
             $this->inputFilter = $inputFilter;

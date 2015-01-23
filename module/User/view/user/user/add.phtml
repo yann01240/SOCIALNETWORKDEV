@@ -6,6 +6,8 @@ $this->headTitle($title);
     <h1  class='col-xs-4 col-xs-offset-5'><?php echo $this->escapeHtml($title); ?></h1>
 </div><br>
 <?php
+$form = $this->form;
+$form->setAttribute('class', 'form-horizontal');
 $form->setAttribute('action', $this->url('user', array('action' => 'add')));
 $form->prepare();
 ?>
@@ -13,10 +15,10 @@ $form->prepare();
 
 <div class='row'>
     <div class='col-xs-6 col-xs-offset-3'>
-    <form class="form-horizontal">
 
         <?php echo $this->form()->openTag($form); ?>
         <?php echo $this->formHidden($form->get('id_user')); ?>
+        <fieldset>
         <div class="form-group">
             <label for="nom_user" class="control-label col-xs-4">Nom</label>
             <div class="col-xs-8">
@@ -92,8 +94,8 @@ $form->prepare();
                 <?php echo $this->formSubmit($form->get('submit')); ?>
             </div>
         </div>
+    </fieldset>
         <?php echo $this->form()->closeTag(); ?>
 
-    </form>
 </div>
 </div>
