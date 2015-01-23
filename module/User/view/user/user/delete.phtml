@@ -3,10 +3,7 @@
  $title = 'Supprimer mon Compte';
  $this->headTitle($title);
  ?>
- <h1><?php echo $this->escapeHtml($title); ?></h1>
 
- <p>Êtes-vous sûr de vouloir supprimer définitivement votre compte ?
- </p>
  <?php
  $url = $this->url('user', array(
      'action' => 'delete',
@@ -14,9 +11,13 @@
  ));
  ?>
  <form action="<?php echo $url; ?>" method="post">
+     <fieldset>
+         <legend><?php echo $this->escapeHtml($title); ?></legend>
  <div>
+     <label>Êtes-vous sûr de vouloir supprimer définitivement votre compte ?</label><br>
      <input type="hidden" name="id" value="<?php echo (int) $user->id_user; ?>" />
-     <input type="submit" name="del" value="Oui" />
-     <input type="submit" name="del" value="Non" />
+     <input class="btn btn-success" type="submit" name="del" value="Oui" />
+     <input class="btn btn-danger" type="submit" name="del" value="Non" />
  </div>
+     </fieldset>
  </form>

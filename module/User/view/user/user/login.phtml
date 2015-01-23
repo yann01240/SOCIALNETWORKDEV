@@ -9,16 +9,13 @@ $form->prepare();
      var_dump($formenonvalide);
             unset($formenonvalide);
 }?>
-<div  class='row'>
-    <h1  class='col-xs-2 col-xs-offset-5'><?php echo $this->escapeHtml($title); ?></h1>
-</div>
 
-<br>
 
+<?php echo $this->form()->openTag($form); ?>
+<fieldset>
+    <legend><?php echo $this->escapeHtml($title); ?></legend>
 <div class='row'>
     <div class='col-xs-6 col-xs-offset-3'>
-
-        <?php echo $this->form()->openTag($form); ?>
         <div class="form-group">
             <label for="mail_user" class="control-label col-xs-4">Email</label>
             <div class="col-xs-8">
@@ -31,13 +28,18 @@ $form->prepare();
                 <?php echo $this->formRow($form->get('password_user')); ?>
             </div>
         </div>
+    
+    </div>
+</div>
+<div class="row">
         <div class="form-group">
-            <div class="col-xs-8">
+            <div class="col-xs-offset-5">
                 <?php echo $this->formSubmit($form->get('submit')); ?>
             </div>
         </div>
-
-        <?php echo $this->form()->closeTag(); ?>
-    </div>
 </div>
+    
+    
+</fieldset>
+        <?php echo $this->form()->closeTag(); ?>
 

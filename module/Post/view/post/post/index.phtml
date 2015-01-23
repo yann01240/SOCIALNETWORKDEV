@@ -9,40 +9,43 @@ if ($session->offsetExists('id_user')) {
 $title = 'Posts';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<fieldset><legend><?php echo $this->escapeHtml($title); ?></legend></fieldset>
 <p>
-    <a href="<?php echo $this->url('post', array('action' => 'add')); ?>">Ajouter un Post</a>
+    <a class="btn btn-success" href="<?php echo $this->url('post', array('action' => 'add')); ?>">Ajouter un Post</a>
 </p>
 
-<table class="table">
+<table class="table table-striped table-responsive">
+            <?php foreach ($posts as $post) : foreach ($users as $user) : if ($user->id_user == $post->id_user) break;
+                endforeach; ?>
     <tr>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Titre</th>
-        <th>contenu</th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($posts as $post) : 
-        foreach ($users as $user) :
-            if ($user->id_user==$post->id_user){
-                break;
-            }
-        endforeach;
-    ?>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 well">
+                <div class="col-xs-3">
+                    <label for="nom_user">Nom : </label>
+                    <?php echo $this->escapeHtml($user->nom_user); ?>
+                </div>
+                <div class="col-xs-3">
+                    <label for="prenom_user">Prénom : </label>
+                    <?php echo $this->escapeHtml($user->prenom_user); ?>
+                </div>
 
-        <tr>
-            <td><?php echo $this->escapeHtml($user->nom_user); ?></td>
-            <td><?php echo $this->escapeHtml($user->prenom_user); ?></td>
-            <td><?php echo $this->escapeHtml($post->titre); ?></td>
-            <td><?php echo $this->escapeHtml($post->contenu); ?></td>
-            <?php if ($id_user == $post->id_user) { ?>
-                <td>
-                    <a href="<?php echo $this->url('post', array('action' => 'edit', 'id' => $post->id_post));
-        ?>">Modifier</a>
-                    <a href="<?php echo $this->url('post', array('action' => 'delete', 'id' => $post->id_post));
-        ?>">Supprimer</a>
-                </td>
-            <?php } ?>
-        </tr>
-    <?php endforeach; ?>
+                <div class="col-xs-12">
+                    <h3><?php echo $this->escapeHtml($post->titre); ?></h3>
+                </div>
+
+                <div class="col-xs-12 well" style="background-color: white">
+                    <?php echo $this->escapeHtml($post->contenu); ?>
+                </div>
+
+    <?php if ($id_user == $post->id_user) { ?>
+                    <div>
+                        <a class="btn btn-default col-xs-offset-6 col-xs-2" href="<?php echo $this->url('post', array('action' => 'edit', 'id' => $post->id_post)); ?>">Modifier</a>
+                        <a class="btn btn-danger col-xs-offset-1 col-xs-2" href="<?php echo $this->url('post', array('action' => 'delete', 'id' => $post->id_post)); ?>">Supprimer</a>
+                    </div>
+    <?php } ?>
+            </div>
+        </div>
+    </tr>
+<?php endforeach; ?>
+
 </table>

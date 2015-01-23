@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Zend\\' => array($vendorDir . '/zendframework/zendframework/library'),
     'ZendXml' => array($vendorDir . '/zendframework/zendxml/library'),
-    'Album' => array($baseDir . '/module/Album/src'),
+    'Post' => array($baseDir . '/module/Post/src'),
+    'User' => array($baseDir . '/module/User/src'),
 );

@@ -40,7 +40,7 @@ class PostController extends AbstractActionController {
             ));
         }
         $form = new PostForm();
-        $form->get('submit')->setValue('Add');
+        $form->get('submit')->setValue('Poster');
 
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -94,7 +94,7 @@ class PostController extends AbstractActionController {
 
         $form = new PostForm();
         $form->bind($post);
-        $form->get('submit')->setAttribute('value', 'Edit');
+        $form->get('submit')->setValue('Modifier');
 
         $request = $this->getRequest();
         if ($request->isPost()) {

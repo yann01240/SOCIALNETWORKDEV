@@ -1,21 +1,51 @@
 <?php
+
 use Zend\Session\Container;
+
 $session = new Container('socialnetwork_user');
 if ($session->offsetExists('id_user')) {
     $id_user = $session->offsetGet('id_user');
 }
-$title = 'Ajouter un Post';
+$title = 'Poster un Article';
 $this->headTitle($title);
-?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
+
+$form = $this->form;
+$form->setAttribute('class', 'form-horizontal');
 $form->setAttribute('action', $this->url('post', array('action' => 'add')));
 $form->prepare();
+?>
 
-echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('id_post'));
-echo $this->formHidden($form->get('id_user')->setValue($id_user));
-echo $this->formRow($form->get('titre'));
-echo $this->formRow($form->get('contenu'));
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+<?php echo $this->form()->openTag($form); ?>
+<fieldset>
+    <legend>
+        <?php echo $this->escapeHtml($title); ?>
+    </legend>
+
+    <?php echo $this->formHidden($form->get('id_post')); ?>
+    <?php echo $this->formHidden($form->get('id_user')->setValue($id_user)); ?>
+    <div class='row'>
+        <div class='col-xs-8 col-xs-offset-2'>
+            <div class="form-group">
+                <label for="titre" class="control-label col-xs-2">Titre</label>
+                <div class="col-xs-10">
+                    <?php echo $this->formRow($form->get('titre')); ?>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contenu" class="control-label col-xs-2">Contenu</label>
+                <div class="col-xs-10">
+                    <?php echo $this->formRow($form->get('contenu')); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xs-offset-5">
+                <?php echo $this->formSubmit($form->get('submit')); ?>
+            </div>
+        </div>
+    </div>
+
+</fieldset>
+<?php echo $this->form()->closeTag(); ?>

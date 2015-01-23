@@ -85,7 +85,7 @@ class UserForm extends Form {
         
         $submit = new \Zend\Form\Element\Submit('submit');
         $submit->setValue('Inscription');
-        $submit->setAttribute('class', 'btn btn-primary');
+        $submit->setAttribute('class', 'btn btn-primary col-xs-2');
         $this->add($submit);
     }
 
