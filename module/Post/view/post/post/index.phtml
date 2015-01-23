@@ -13,9 +13,14 @@ $this->headTitle($title);
 <p>
     <a class="btn btn-success" href="<?php echo $this->url('post', array('action' => 'add')); ?>">Ajouter un Post</a>
 </p>
-
+<?php
+$data = array();
+foreach ($posts as $row) {
+    array_push($data, $row);
+};
+$data = array_reverse($data,true);?>
 <table class="table table-striped table-responsive">
-            <?php foreach ($posts as $post) : foreach ($users as $user) : if ($user->id_user == $post->id_user) break;
+            <?php foreach ($data as $post) : foreach ($users as $user) : if ($user->id_user == $post->id_user) break;
                 endforeach; ?>
     <tr>
     <div class="row">
