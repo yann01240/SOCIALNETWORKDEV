@@ -12,8 +12,8 @@
          <legend><?php echo $this->escapeHtml($title); ?></legend>
  <div>
      
-     <label>Êtes-vous sûr de vouloir supprimer définitivement cd post ?</label><br>
-     <input type="hidden" name="id" value="<?php echo (int) $post->id; ?>" />
+     <label>Êtes-vous sûr de vouloir supprimer définitivement ce post ?</label><br>
+     <input type="hidden" name="id" value="<?php echo (int) $user->id; ?>" />
      <input class="btn btn-success" type="submit" name="del" value="Oui" />
      <input class="btn btn-danger" type="submit" name="del" value="Non" />
  </div>

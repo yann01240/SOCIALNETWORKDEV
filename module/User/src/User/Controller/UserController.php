@@ -152,7 +152,7 @@ class UserController extends AbstractActionController {
 
             if ($del == 'Oui') {
                 $id = (int) $request->getPost('id');
-
+                
                 $this->getUserTable()->deleteUser($id);
             }
 
